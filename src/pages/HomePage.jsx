@@ -250,6 +250,176 @@ const HomePage = () => {
             </div>
           </section>
         )}
+        {/* ================= CONTACT US ================= */}
+        <section className="py-20 px-6 bg-white w-full border-t border-gray-100">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-14">
+              <p className="text-[11px] font-bold tracking-widest text-amber-600 uppercase mb-3">
+                Get in Touch
+              </p>
+              <h2 className="text-3xl md:text-4xl font-extrabold text-green-900">Contact Us</h2>
+              <p className="text-gray-500 mt-3 max-w-xl mx-auto">
+                Have a question, want to book the venue, or host a tournament? Reach out — we reply within a day.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+              {/* ---------- LEFT: contact info ---------- */}
+              <div className="space-y-4">
+
+                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex gap-4 hover:border-green-200 transition">
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-green-50 flex items-center justify-center">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s7-7.58 7-13a7 7 0 1 0-14 0c0 5.42 7 13 7 13z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Location</p>
+                    <p className="text-sm font-semibold text-gray-800">123 Rizal Avenue, Barangay San Roque</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Marikina City, Metro Manila</p>
+                  </div>
+                </div>
+
+                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex gap-4 hover:border-green-200 transition">
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-green-50 flex items-center justify-center">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Phone</p>
+                    <p className="text-sm font-semibold text-gray-800">+63 912 345 6789</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Mon – Sun, 10:00 AM – 2:00 AM</p>
+                  </div>
+                </div>
+
+                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex gap-4 hover:border-green-200 transition">
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-green-50 flex items-center justify-center">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2" />
+                      <path d="m22 6-10 7L2 6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Email</p>
+                    <p className="text-sm font-semibold text-gray-800">hello@zaisbilliard.ph</p>
+                    <p className="text-xs text-gray-500 mt-0.5">For bookings & event inquiries</p>
+                  </div>
+                </div>
+
+                <div className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex gap-4 hover:border-green-200 transition">
+                  <div className="w-11 h-11 shrink-0 rounded-xl bg-green-50 flex items-center justify-center">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M12 6v6l4 2" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Opening Hours</p>
+                    <p className="text-sm font-semibold text-gray-800">Monday – Sunday: 10:00 AM – 2:00 AM</p>
+                    <p className="text-xs text-gray-500 mt-0.5">Open 7 days a week</p>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* ---------- RIGHT: message form ---------- */}
+              <div className="bg-white border border-gray-100 rounded-2xl shadow-sm p-6">
+                <div className="flex items-center gap-2 mb-5">
+                  <div className="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#166534" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 4h16v16H4z" />
+                      <path d="m22 6-10 7L2 6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 className="text-sm font-extrabold text-green-900">Send Us a Message</h2>
+                    <p className="text-[11px] text-gray-400">We'll get back to you by email.</p>
+                  </div>
+                </div>
+
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const form = e.target;
+                    const name = form.name.value;
+                    const email = form.email.value;
+                    const subject = form.subject.value || 'Inquiry from Zai\'s website';
+                    const message = form.message.value;
+                    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+                    window.location.href = `mailto:hello@zaisbilliard.ph?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  }}
+                  className="space-y-3"
+                >
+                  <div>
+                    <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">
+                      Your Name
+                    </label>
+                    <input
+                      name="name"
+                      type="text"
+                      required
+                      placeholder="Juan Dela Cruz"
+                      className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">
+                      Email
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="you@example.com"
+                      className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">
+                      Subject
+                    </label>
+                    <input
+                      name="subject"
+                      type="text"
+                      placeholder="Table booking, tournament, etc."
+                      className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1.5">
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      required
+                      rows={4}
+                      placeholder="Tell us how we can help..."
+                      className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-green-600 focus:ring-2 focus:ring-green-100 resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-2.5 rounded-xl bg-green-800 text-white text-sm font-bold hover:bg-green-900 transition flex items-center justify-center gap-2"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 2 11 13" />
+                      <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+                    </svg>
+                    Send Message
+                  </button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </section>
 
       </div>
     </MainLayouts>
