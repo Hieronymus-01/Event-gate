@@ -6,7 +6,7 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { supabase } from '../utils/Supabase';
 import { useContext, useEffect } from 'react';
 import { SessionContext } from '../Contexts/SessionContexts.js'
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -48,7 +48,7 @@ const Login = () => {
                 <div className="flex justify-center items-center flex-1">
                     <Card>
                         <h1 className="text-xl font-bold text-center mb-4">
-                            Welcome <span className="text-primary">Back 👋</span>
+                            <span className="text-primary">LOGIN </span>
                         </h1>
                         <form onSubmit={handleSubmit}>
                             <Input
@@ -67,6 +67,13 @@ const Login = () => {
                                 <FaPaperPlane className="text-sm" /> Login
                             </button>
                         </form>
+
+                        <p className="text-center text-sm mt-4">
+                            Don't have an account?{" "}
+                            <Link to="/sign-up" className="text-primary font-semibold hover:underline">
+                                Sign Up
+                            </Link>
+                        </p>
                     </Card>
                 </div>
             </div>

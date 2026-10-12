@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Card from "./Card";
 import { Link } from 'react-router-dom';
 import { SessionContext } from "../../Contexts/SessionContexts";
 import { supabase } from "../../utils/Supabase";
@@ -14,9 +13,29 @@ const getEventStatus = (startDate, endDate) => {
     start.setHours(0, 0, 0, 0);
     end.setHours(0, 0, 0, 0);
 
-    if (today < start) return { label: 'Upcoming', style: 'bg-blue-100 text-blue-700' };
-    if (today > end) return { label: 'Ended', style: 'bg-gray-100 text-gray-500' };
-    return { label: 'Ongoing', style: 'bg-green-100 text-green-700' };
+    if (today < start) return { label: 'Upcoming', dot: '#2563eb', cls: 'bg-blue-50 text-blue-700 border border-blue-200' };
+    if (today > end) return { label: 'Ended', dot: '#dc2626', cls: 'bg-red-50 text-red-700 border border-red-200' };
+    return { label: 'Ongoing', dot: '#16a34a', cls: 'bg-green-50 text-green-700 border border-green-200' };
+};
+
+const formatDate = (d) => {
+    if (!d) return '—';
+    const date = new Date(d);
+    if (isNaN(date.getTime())) return d;
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+};
+
+const formatTime = (t) => {
+    if (!t) return '';
+    const parts = String(t).split(':');
+    if (parts.length >= 2 && !isNaN(parts[0])) {
+        const h = parseInt(parts[0], 10);
+        const m = parts[1];
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        const h12 = h % 12 === 0 ? 12 : h % 12;
+        return `${h12}:${m} ${ampm}`;
+    }
+    return t;
 };
 
 const EventCard = ({ event, registrations, setRegistrations, setEvents }) => {
@@ -90,28 +109,62 @@ const EventCard = ({ event, registrations, setRegistrations, setEvents }) => {
     };
 
     return (
-        <Card>
-            {/* Status Badge + Registration Count */}
+        <div className="bg-white border border-gray-100 rounded-2xl p-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg hover:border-green-200 cursor-pointer flex flex-col">
+            {/* Status + count */}
             <div className="flex items-center justify-between mb-3">
-                <span className={`text-xs font-semibold px-3 py-1 rounded-full ${status.style}`}>
+                <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${status.cls}`}>
+                    <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ background: status.dot }} />
                     {status.label}
                 </span>
-                <span className="text-xs text-gray-400 font-medium">
-                    {registrationCount} {registrationCount === 1 ? 'student' : 'students'} registered
+                <span className="text-[10px] text-gray-400 font-medium">
+                    {registrationCount} registered
                 </span>
             </div>
 
-            <h2 className="text-xl font-bold">{event.title}</h2>
-            <p className="text-sm text-gray-500 mt-1">Start Date: {event.start_date}</p>
-            <p className="text-sm text-gray-500">End Date: {event.end_date}</p>
-            <p className="text-sm text-gray-500">Start Time: {event.start_time}</p>
-            <p className="text-sm text-gray-500">End Time: {event.end_time}</p>
-            <p className="text-sm text-gray-500">Location: {event.location}</p>
+            {/* Title + location */}
+            <h3 className="text-base font-extrabold text-green-900 leading-tight truncate" title={event.title}>
+                {event.title}
+            </h3>
+            <p className="text-[11px] text-gray-400 mb-3 truncate" title={event.location}>
+                {event.location || '—'}
+            </p>
 
-            <div className="pt-5 flex flex-wrap gap-2">
+            {/* Info rows */}
+            <div className="space-y-1.5 mb-4 text-xs flex-1">
+                <div className="flex justify-between items-center">
+                    <span className="flex items-center gap-1.5 text-gray-500">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                        </svg>
+                        Date
+                    </span>
+                    <span className="font-semibold text-gray-800 text-right">
+                        {formatDate(event.start_date)}
+                        {event.end_date && event.end_date !== event.start_date && ` – ${formatDate(event.end_date)}`}
+                    </span>
+                </div>
+
+                <div className="flex justify-between items-center">
+                    <span className="flex items-center gap-1.5 text-gray-500">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                        Time
+                    </span>
+                    <span className="font-semibold text-gray-800 text-right">
+                        {formatTime(event.start_time)}
+                        {event.end_time && ` – ${formatTime(event.end_time)}`}
+                    </span>
+                </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-1.5">
                 <Link
                     to={`/view-event/${event.id}`}
-                    className="btn btn-primary rounded-full btn-outline btn-sm"
+                    className="flex-1 text-center py-1.5 rounded-lg border-2 border-green-800 text-green-800 text-[11px] font-bold hover:bg-green-800 hover:text-white transition"
                 >
                     View
                 </Link>
@@ -120,12 +173,12 @@ const EventCard = ({ event, registrations, setRegistrations, setEvents }) => {
                     <>
                         <Link
                             to={`/edit-event/${event.id}`}
-                            className="btn btn-primary rounded-full btn-sm"
+                            className="flex-1 text-center py-1.5 rounded-lg bg-green-800 text-white text-[11px] font-bold hover:bg-green-900 transition"
                         >
                             Edit
                         </Link>
                         <button
-                            className="btn btn-error rounded-full text-white btn-sm"
+                            className="flex-1 py-1.5 rounded-lg bg-red-600 text-white text-[11px] font-bold hover:bg-red-700 transition"
                             onClick={deleteEvent}
                         >
                             Delete
@@ -135,9 +188,10 @@ const EventCard = ({ event, registrations, setRegistrations, setEvents }) => {
 
                 {profile?.role === "user" && !isRegistered && (
                     <button
-                        className="btn btn-primary rounded-full btn-sm"
+                        className="flex-1 py-1.5 rounded-lg bg-green-800 text-white text-[11px] font-bold hover:bg-green-900 transition disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed"
                         onClick={register}
                         disabled={status.label === 'Ended'}
+                        title={status.label === 'Ended' ? 'This event has ended' : 'Register for this event'}
                     >
                         Register
                     </button>
@@ -145,14 +199,14 @@ const EventCard = ({ event, registrations, setRegistrations, setEvents }) => {
 
                 {profile?.role === "user" && isRegistered && (
                     <button
-                        className="btn btn-secondary rounded-full btn-sm"
+                        className="flex-1 py-1.5 rounded-lg bg-amber-500 text-white text-[11px] font-bold hover:bg-amber-600 transition"
                         onClick={unregister}
                     >
                         Unregister
                     </button>
                 )}
             </div>
-        </Card>
+        </div>
     );
 };
 

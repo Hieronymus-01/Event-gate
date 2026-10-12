@@ -1,5 +1,5 @@
 import React from 'react'
-import MainLayout from '../Layouts/MainLayouts'
+import MainLayouts from '../Layouts/MainLayouts'
 import { useParams } from 'react-router'
 import { useEffect } from 'react';
 import { supabase } from '../utils/Supabase';

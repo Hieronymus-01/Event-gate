@@ -5,8 +5,9 @@ import Card from '../components/Icon/Card';
 import { FaPaperPlane } from 'react-icons/fa';
 import { supabase } from '../utils/Supabase';
 import { useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router-dom';
 import { SessionContext } from '../Contexts/SessionContexts.js'
+
 
 const SignUp = () => {
     const { session } = useContext(SessionContext);
@@ -57,7 +58,7 @@ const SignUp = () => {
                 <div className="flex justify-center items-center flex-1">
                     <Card>
                         <h1 className="text-xl font-bold text-center mb-4">
-                            Create an <span className="text-primary">Account👌</span>
+                            Create an <span className="text-primary">Account</span>
                         </h1>
                         <form onSubmit={handleSubmit}>
                             <Input
@@ -91,9 +92,9 @@ const SignUp = () => {
 
                         <p className="text-center text-sm mt-4">
                             Already have an account?{" "}
-                            <label htmlFor="login_modal" className="text-primary font-semibold hover:underline cursor-pointer">
+                            <Link to="/log-in" className="text-primary font-semibold hover:underline">
                                 Login
-                            </label>
+                            </Link>
                         </p>
                     </Card>
                 </div>

@@ -24,7 +24,7 @@ const ViewEvent = () => {
 
     return (
         <MainLayouts>
-            <div className="max-w-2xl mx-auto py-16 px-4">
+            <div className="w-full px-6 py-5">
 
                 {/* Back Button */}
                 <Link
@@ -71,9 +71,9 @@ const ViewEvent = () => {
                             <p className="text-gray-800 font-medium">{event?.location || '—'}</p>
                         </div>
                         <div>
-    <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Description</p>
-    <p className="text-gray-800 font-medium whitespace-pre-wrap">{event?.description || '—'}</p>
-</div>
+                            <p className="text-xs text-gray-400 uppercase tracking-widest mb-1">Description</p>
+                            <p className="text-gray-800 font-medium whitespace-pre-wrap">{event?.description || '—'}</p>
+                        </div>
                     </div>
 
                     {/* Admin Actions */}

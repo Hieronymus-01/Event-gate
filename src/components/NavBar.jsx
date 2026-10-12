@@ -24,18 +24,17 @@ const NavBar = () => {
     };
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
-            <div className="flex w-full max-w-7xl mx-auto">
+        <div className="navbar bg-base-100 shadow-sm w-full px-6">
+            <div className="flex w-full items-center">
 
-                {/* Brand */}
                 <div className="flex-1">
                     <a className="btn btn-ghost px-0 flex flex-col items-start leading-none h-auto py-1">
                         <span className="text-xl font-bold">
-                            <span className="text-primary">Event</span>
-                            <span className="text-secondary">Gate</span>
+                            <span className="text-primary">Zai's</span>
+                            <span className="text-secondary"> Billiard</span>
                         </span>
                         <span className="text-[0.6rem] font-semibold tracking-widest text-secondary uppercase mt-0.5">
-                            FEU Roosevelt
+                            Billiard Hall &amp; Bar
                         </span>
                     </a>
                 </div>
@@ -87,7 +86,7 @@ const NavBar = () => {
                                 <div className="w-10 rounded-full">
                                     <img
                                         alt="Profile"
-                                        src={profile?.avatar_url || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlOg0JzU3TJSuC8qIw9QnQhu9DabzyZhQkSQ&s.webp"}
+                                        src={profile?.avatar_url || `https://ui-avatars.com/api/?name=${profile?.firstname || 'User'}&background=0D8ABC&color=fff&size=128`}
                                     />
                                 </div>
                             </div>
