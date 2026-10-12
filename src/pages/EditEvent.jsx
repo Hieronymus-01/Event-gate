@@ -24,9 +24,9 @@ const EditEvent = () => {
         fetchEvent();
     }, [eventId]);
     return (
-        <MainLayout>
+        <MainLayouts>
             <EventForm eventData={event} />
-        </MainLayout>
+        </MainLayouts>
     );
 };
 
